@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Background</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+
+  .animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  /* Gradient Animation */
+  .gradient-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Movie Pattern Animation */
+  .movie-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('movie-pattern.png');
+    opacity: 0.2; /* Adjust opacity as needed */
+    pointer-events: none;
+    animation: moviePattern 20s linear infinite;
+  }
+
+  @keyframes moviePattern {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(-100%, -100%);
+    }
+  }
+
+  /* Interactive Mouse Following Effects */
+  .mouse {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+</style>
+</head>
+<body>
+  <div class="animated-background">
+    <div class="gradient-bg"></div>
+    <div class="movie-pattern"></div>
+    <div class="mouse"></div>
+  </div>
+  <div class="content">
+    <!-- Your content here -->
+    <h1>Welcome to Animated Background</h1>
+    <p>This is a simple example of an animated background with subtle animation for web pages.</p>
+  </div>
+
+  <script>
+    document.addEventListener('mousemove', function(e) {
+      const mouse = document.querySelector('.mouse');
+      mouse.style.left = e.pageX + 'px';
+      mouse.style.top = e.pageY + 'px';
+    });
+  </script>
+</body>
+</html>
